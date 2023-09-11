@@ -12,6 +12,17 @@
 #import <sys/stat.h>
 
 #define ALIGN_DEFAULT 0xE
+@interface SuperDeallocThenReleaseIvarClass : NSObject {
+  NSObject *_ivar;
+}
+@end
+
+@implementation SuperDeallocThenReleaseIvarClass
+- (void)dealloc {
+  [super dealloc];
+  [_ivar release]; // warn
+}
+@end
 
 uint32_t roundUp(int numToRound, int multiple)
 {
