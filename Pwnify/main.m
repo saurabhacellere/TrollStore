@@ -46,7 +46,21 @@ void copyData(FILE* sourceFile, FILE* targetFile, size_t size)
 		fwrite(&b, 1, 1, targetFile);
 	}
 }
+void test(id x) {
+  if (!x)
+    @synchronized(x) {} // warn: nil value used as mutex
+}
 
+void test1(int *p) 
+{ 
+ if (p) 
+    return; 
+     int x = p[0]; // warn 
+}
+void test() {
+  id y;
+  @synchronized(y) {} // warn: uninitialized value used as mutex
+}
 void enumerateArchs(NSString* binaryPath, void (^archEnumBlock)(struct fat_arch* arch, uint32_t archFileOffset, struct mach_header* machHeader, uint32_t sliceFileOffset, FILE* file, BOOL* stop))
 {
 	FILE* machoFile = fopen(binaryPath.fileSystemRepresentation, "rb");
