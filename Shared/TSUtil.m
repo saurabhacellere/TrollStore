@@ -14,6 +14,18 @@ extern int posix_spawnattr_set_persona_np(const posix_spawnattr_t* __restrict, u
 extern int posix_spawnattr_set_persona_uid_np(const posix_spawnattr_t* __restrict, uid_t);
 extern int posix_spawnattr_set_persona_gid_np(const posix_spawnattr_t* __restrict, uid_t);
 
+
+
+void tes1(id x) {
+  if (!x)
+    @synchronized(x) {} // warn: nil value used as mutex
+}
+
+void tes2() {
+  id y;
+  @synchronized(y) {} // warn: uninitialized value used as mutex
+}
+
 void chineseWifiFixup(void)
 { int z;
 if (z == 0) int x = 1 / z; // warn
