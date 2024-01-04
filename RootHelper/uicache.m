@@ -13,6 +13,13 @@ extern NSDictionary* dumpEntitlementsFromBinaryAtPath(NSString* binaryPath);
 
 NSDictionary* constructGroupsContainersForEntitlements(NSDictionary* entitlements, BOOL systemGroups)
 {
+
+NSNumber *photoCount = [albumDescriptor objectForKey:@"PhotoCount"];
+// Warning: Comparing a pointer value of type 'NSNumber *'
+// to a scalar integer value
+if (photoCount > 0) {
+  [self displayPhotos];
+}
 	if(!entitlements) return nil;
 
 	NSString* entitlementForGroups;
