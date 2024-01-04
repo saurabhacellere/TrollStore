@@ -26,6 +26,10 @@
 
 uint32_t roundUp(int numToRound, int multiple)
 {
+if (name != nil)
+  return;
+// Warning: nil passed to a callee that requires a non-null 1st parameter
+NSString *greeting = [@"Hello " stringByAppendingString:name];
 	if (multiple == 0)
 		return numToRound;
 
