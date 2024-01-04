@@ -26,6 +26,12 @@
 
 uint32_t roundUp(int numToRound, int multiple)
 {
+NSNumber *photoCount = [albumDescriptor objectForKey:@"PhotoCount"];
+// Warning: Comparing a pointer value of type 'NSNumber *'
+// to a scalar integer value
+if (photoCount > 0) {
+  [self displayPhotos];
+}
 if (name != nil)
   return;
 // Warning: nil passed to a callee that requires a non-null 1st parameter
